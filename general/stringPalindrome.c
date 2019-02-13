@@ -1,47 +1,27 @@
 #include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
 
 void main()
 {
-	int i,j,len=0;
-	char str[30];
-	printf("\nEnter a string : ");
-	scanf("%s",&str);
-	
-	while(str[len]!='\0')
-	len++;
-	int x,y;
-	
-	int flag=0;
-	for(i=0,j=len-1;i<j;i++,j--)
+	char str[10], *strev;
+	int comp;
+	strev = (char*)malloc(sizeof(char)*10);
+	int i,j;
+	char temp;
+	printf("\nEnter a string: ");
+	scanf("%s",str);
+	strcpy(strev,str);
+	for(i=0,j=strlen(strev)-1;i<j;i++,j--)
 	{
-		
-		if(str[i]>='A' && str[i]<='Z')
-		{
-			x=str[i]-'A';
-		}
-		if(str[j]>='A' && str[j]<='Z')
-		{
-			y=str[j]-'A';
-		}
-		
-		if(str[i]>='a' && str[i]<='z')
-		{
-			x=str[i]-'a';
-		}
-		if(str[j]>='a' && str[j]<='z')
-		{
-			y=str[j]-'a';
-		}
-		
-		if(x!=y)
-		{
-			flag=1;
-			break;
-		}
+		temp = *(strev+i);
+		*(strev+i) = *(strev+j);
+		*(strev+j) = temp;
 	}
-	if(flag==0)
-	printf("\n%s is palindrome.\n\n",str);
+	printf("\nreversed: %s",strev);
+	if(strcmp(str,strev) == 0)
+	printf("\nString is Palindrome.\n");
 	else
-	printf("\n%s is not palindrome.\n\n",str);
+	printf("\nString is not Palindrome.\n");
 	
 }
