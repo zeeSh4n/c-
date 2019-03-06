@@ -65,7 +65,7 @@ void main()
 			else
 			{
 				temp=pop();
-				while(operator(temp)==1 && priority(temp) <= item)
+				while(operator(temp)==1 && priority(temp) >= priority(item))
 				{
 					res[j]=temp;
 					j++;
@@ -101,3 +101,4 @@ void main()
 	printf("\ninfix = %s\n",exp);
 	printf("\npostfix exp= %s\n\n",res);
 }
+
